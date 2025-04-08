@@ -1,7 +1,7 @@
-import 'package:first_lab/screens/second_screen.dart';
+import 'package:first_lab/cubit/credit_cubut.dart';
+import 'package:first_lab/screens/main_screen.dart';
 import 'package:flutter/material.dart';
-
-import 'screens/first_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(const MainApp());
@@ -12,13 +12,13 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Бусыгина Татьяна. Калькулятор простых процентов',
-      home: FirstScreen(),
-      routes: {
-        '/second' : (context) => const SecondScreen(),
-      }
+    return BlocProvider(
+      create: (context) => CreditCubit(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Бусыгина Татьяна. Калькулятор простых процентов',
+        home: MainScreen(),
+      ),
     );
   }
 }
